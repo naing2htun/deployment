@@ -14,6 +14,10 @@ jobs:
     container:
       image: bytebase/bytebase-action:${{ vars.BYTEBASE_ACTION_VERSION }}
     steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
       - name: Install git
         run: apk add --no-cache git curl
       - name: Rollout to qa
