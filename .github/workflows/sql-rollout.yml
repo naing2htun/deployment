@@ -25,3 +25,4 @@ jobs:
           project: ${{ env.BYTEBASE_PROJECT }}
           target-stage: "projects/{{ github.event.repo.name }}"
           full-repo: ${{ github.repository }}
+          access-token: ${{ secrets.GITHUB_TOKEN }}
