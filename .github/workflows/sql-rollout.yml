@@ -9,7 +9,7 @@ on:
       - ".github/workflows/sql-rollout.yml" # to allow workflow updates
 
 jobs:
-  deploy-to-qa:
+  rollout-to-qa:
     runs-on: ubuntu-latest
     container:
       image: bytebase/bytebase-action:${{ vars.BYTEBASE_ACTION_VERSION }}
@@ -22,7 +22,7 @@ jobs:
           bytebase-url: ${{ vars.BYTEBASE_URL_NONPROD }}
           bytebase-service-account: ${{ vars.BYTEBASE_SERVICE_ACCOUNT_NONPROD }}
           bytebase-service-account-secret: ${{ secrets.BYTEBASE_SERVICE_ACCOUNT_SECRET_NONPROD }}
-          project: ${{ env.BYTEBASE_PROJECT }}
-          target-stage: "projects/{{ github.event.repo.name }}"
-          full-repo: ${{ github.repository }}
+          project: "projects/latitude-demo"
+          target-stage: "environments/qa"
+          full-repo: "naing2htun/latitude-demo"
           access-token: ${{ secrets.GITHUB_TOKEN }}
