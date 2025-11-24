@@ -10,7 +10,7 @@ on:
 
 jobs:
   deploy-to-qa:
-    if: contains(github.event.head_commit.modified, 'overlays/qa/migrations/')
+    if: contains(github.event.head_commit.modified, '*/overlays/qa/migrations/*.up.sql')
     runs-on: ubuntu-latest
     container:
       image: bytebase/bytebase-action:${{ vars.BYTEBASE_ACTION_VERSION }}
