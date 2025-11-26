@@ -10,23 +10,13 @@ on:
 
 jobs:
   rollout-to-qa:
-    runs-on: ubuntu-latest
-    container:
-      image: bytebase/bytebase-action:${{ vars.BYTEBASE_ACTION_VERSION }}
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v5
-        with:
-          fetch-depth: 0
-      - name: Install git
-        run: apk add --no-cache git curl
-      - name: Rollout to qa
-        uses: naing2htun/actions/sql-rollout@main
-        with:
-          bytebase-url: ${{ vars.BYTEBASE_URL_NONPROD }}
-          bytebase-service-account: ${{ vars.BYTEBASE_SERVICE_ACCOUNT_NONPROD }}
-          bytebase-service-account-secret: ${{ secrets.BYTEBASE_SERVICE_ACCOUNT_SECRET_NONPROD }}
-          project: "projects/latitude-demo"
-          target-stage: "environments/qa"
-          full-repo: "naing2htun/latitude-demo"
-          access-token: ${{ secrets.GITHUB_TOKEN }}
+    uses: naing2htun/actions/.github/workflows/sql-rollout.yml@main
+    with:
+      bytebase-url: ${{ vars.BYTEBASE_URL_NONPROD }}
+      bytebase-service-account: ${{ vars.BYTEBASE_SERVICE_ACCOUNT_NONPROD }}
+      project: "projects/latitude-demo"
+      target-stage: "environments/qa"
+      full-repo: "naing2htun/latitude-demo"
+    secrets:
+      bytebase-service-account-secret: ${{ secrets.BYTEBASE_SERVICE_ACCOUNT_SECRET_NONPROD }}
+      access-token: ${{ secrets.GITHUB_TOKEN }}
