@@ -9,7 +9,7 @@ on:
       - ".github/workflows/sql-rollout.yml" # to allow workflow updates
 
 jobs:
-  rollout-to-qa:
+  rollout-qa:
     uses: naing2htun/actions/.github/workflows/sql-rollout.yml@main
     with:
       bytebase-url: ${{ vars.BYTEBASE_URL_NONPROD }}
