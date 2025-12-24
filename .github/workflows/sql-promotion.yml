@@ -12,5 +12,3 @@ jobs:
     uses: naing2htun/actions/.github/workflows/sql-promotion.yml@main
     with:
       stage-environment: "stg"
-    secrets:
-      service-repo-token: ${{ secrets.SERVICE_REPO_TOKEN }}
